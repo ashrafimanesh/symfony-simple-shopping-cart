@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        <div class="form-group">
+            {{ form_label(registrationForm.username) }}
+            {{ form_widget(registrationForm.username, {
+                'attr': {
+                    'class': 'form-control form-control-sm ' ~ (registrationForm.username.vars.valid ? '' : 'is-invalid'),
+                }
+            }) }}
+            <div class="invalid-feedback">
+                {{ form_errors(registrationForm.username) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(registrationForm.first_name) }}
+            {{ form_widget(registrationForm.first_name, {
+                'attr': {
+                    'class': 'form-control form-control-sm ' ~ (registrationForm.first_name.vars.valid ? '' : 'is-invalid'),
+                }
+            }) }}
+            <div class="invalid-feedback">
+                {{ form_errors(registrationForm.first_name) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(registrationForm.last_name) }}
+            {{ form_widget(registrationForm.last_name, {
+                'attr': {
+                    'class': 'form-control form-control-sm ' ~ (registrationForm.last_name.vars.valid ? '' : 'is-invalid'),
+                }
+            }) }}
+            <div class="invalid-feedback">
+                {{ form_errors(registrationForm.last_name) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(registrationForm.plainPassword) }}
+            {{ form_widget(registrationForm.plainPassword, {
+                'attr': {
+                    'class': 'form-control form-control-sm ' ~ (registrationForm.plainPassword.vars.valid ? '' : 'is-invalid'),
+                }
+            }) }}
+            <div class="invalid-feedback">
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+        </div>
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

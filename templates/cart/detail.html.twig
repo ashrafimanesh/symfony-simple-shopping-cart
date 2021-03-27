@@ -1,0 +1,60 @@
+{% extends 'home_base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Your Cart</h1>
+        <div class="row mt-4">
+            <!-- List of items -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="invalid-feedback" {{ error ? 'style="display:block"' : '' }}>
+                        <p>{{ error }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for item in order.items %}
+                            <li class="list-group-item d-flex">
+                                <div class="flex-fill mr-2">
+                                    <img src="https://via.placeholder.com/200x150" width="64" alt="Product image">
+                                </div>
+                                <div class="flex-fill mr-2">
+                                    <h5 class="mt-0 mb-0">{{ item.product.name }}</h5>
+                                    <small>{{ item.product.description[:50] }}...</small>
+                                    <div class="form-inline mt-2">
+                                        <div class="form-group mb-0 mr-2">
+                                            Quantity: {{ item.quantity }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-fill mr-2 text-right">
+                                    <b>{{ item.price }} €</b>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Summary -->
+            <div class="col-md-4">
+                <div class="card mt-4 mt-md-0">
+                    <h5 class="card-header bg-dark text-white">Summary</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div><b>Total</b></div>
+                            <span><b>{{ order.totalPrice }} €</b></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div><b>Receipt code</b></div>
+                            <span><b>{{ order.id ? order.code : 'unknown'}}</b></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div><b>Status</b></div>
+                            <span><b>{{ order.status ? order.status : 'unknown'}}</b></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
