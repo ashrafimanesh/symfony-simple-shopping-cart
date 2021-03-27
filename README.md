@@ -21,7 +21,7 @@ Getting started
 $ composer install
 ```
 
-**Starting Docker Compose**
+**Starting Docker Compose(Optional)**
 
 ```
 $ docker-compose up -d
