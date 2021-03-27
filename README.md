@@ -40,3 +40,7 @@ $ symfony server:start -d
 ```
 
 The server started on the port 8000. Open the website http://localhost:8000 in a browser.
+
+** Users **
+
+You can login with username: `user1` and password: `123`
