@@ -27,6 +27,11 @@ $ composer install
 $ docker-compose up -d
 ```
 
+**Migrations**
+```
+$ symfony console doctrine:migrations:migrate
+```
+
 **Loading fake Products and Users**
 
 ```
